@@ -1,0 +1,39 @@
+diff -ur doxygen-1.5.9/Makefile.in doxygen-1.5.9.new/Makefile.in
+--- doxygen-1.5.9/Makefile.in	2008-12-02 21:30:03.000000000 +0100
++++ doxygen-1.5.9.new/Makefile.in	2009-11-25 01:50:39.734375000 +0100
+@@ -50,25 +50,25 @@
+ MAN1DIR = man/man1
+ 
+ install: doxywizard_install 
+-	$(INSTTOOL) -d $(DESTDIR)/$(INSTALL)/bin
+-	$(INSTTOOL) -m 755 bin/doxygen    $(DESTDIR)/$(INSTALL)/bin
+-	$(INSTTOOL) -m 755 bin/doxytag    $(DESTDIR)/$(INSTALL)/bin
+-	$(INSTTOOL) -d $(DESTDIR)/$(INSTALL)/$(MAN1DIR)
++	$(INSTTOOL) -d $(DESTDIR)$(INSTALL)/bin
++	$(INSTTOOL) -m 755 bin/doxygen    $(DESTDIR)$(INSTALL)/bin
++	$(INSTTOOL) -m 755 bin/doxytag    $(DESTDIR)$(INSTALL)/bin
++	$(INSTTOOL) -d $(DESTDIR)$(INSTALL)/$(MAN1DIR)
+ 	cat doc/doxygen.1    | sed -e "s/DATE/$(DATE)/g" -e "s/VERSION/$(VERSION)/g" > doxygen.1 
+-	$(INSTTOOL) -m 644 doxygen.1 $(DESTDIR)/$(INSTALL)/$(MAN1DIR)/doxygen.1
++	$(INSTTOOL) -m 644 doxygen.1 $(DESTDIR)$(INSTALL)/$(MAN1DIR)/doxygen.1
+ 	rm doxygen.1
+ 	cat doc/doxytag.1    | sed -e "s/DATE/$(DATE)/g" -e "s/VERSION/$(VERSION)/g" > doxytag.1
+-	$(INSTTOOL) -m 644 doxytag.1 $(DESTDIR)/$(INSTALL)/$(MAN1DIR)/doxytag.1
++	$(INSTTOOL) -m 644 doxytag.1 $(DESTDIR)$(INSTALL)/$(MAN1DIR)/doxytag.1
+ 	rm doxytag.1
+ 
+ install_docs: 
+-	$(INSTTOOL) -d $(DESTDIR)/$(DOCDIR)
++	$(INSTTOOL) -d $(DESTDIR)$(DOCDIR)
+ 	$(MAKE) -C examples
+ 	$(MAKE) -C doc 
+ 	$(MAKE) -C latex 
+-	$(INSTTOOL) -m 644 latex/doxygen_manual.pdf $(DESTDIR)/$(DOCDIR)
+-	cp -r examples $(DESTDIR)/$(DOCDIR)
+-	cp -r html $(DESTDIR)/$(DOCDIR)
++	$(INSTTOOL) -m 644 latex/doxygen_manual.pdf $(DESTDIR)$(DOCDIR)
++	cp -r examples $(DESTDIR)$(DOCDIR)
++	cp -r html $(DESTDIR)$(DOCDIR)
+ 
+ docs: FORCE
+ 	cd examples ; $(MAKE)
